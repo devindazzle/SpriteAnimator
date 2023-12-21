@@ -37,29 +37,29 @@ The SpriteAnimator component has the following properties:
 
 If you wish to play a SpriteAnimation from code, it can be done in the following way:
 
-  [SerializeField]
-  private SpriteAnimator animator;
-
-  [SerializeField]
-  private SpriteAnimation idleAnimation;
-
-  private void Start() {
-    // Play the idle animation
-    animator.Play(idleAnimation);
-
-    // Play the idle animation starting at frame 2
-    animator.Play(idleAnimation, 2);
-
-    // Force the idle animation to play starting at frame 2
-    // By default, calling the Play method with the same SpriteAnimation that is already playing will be ignored.
-    // Using force, you can ensure the SpriteAnimation is always played no matter what.
-    animator.Play(idleAnimation, 2, true)
-
-    // Play the idle animation with a callback that will run once the animation ends. Callback will never be executed for looping animations though
-    animator.Play(idleAnimation, 2, false, () => {
-      Debug.Log($"Animation {animator.CurrentAnimation.title} finished");
-    });
-  }
+	[SerializeField]
+	private SpriteAnimator animator;
+	
+	[SerializeField]
+	private SpriteAnimation idleAnimation;
+ 	
+	private void Start() {
+		// Play the idle animation
+		animator.Play(idleAnimation);
+  		
+    		// Play the idle animation starting at frame 2
+    		animator.Play(idleAnimation, 2);
+		
+    		// Force the idle animation to play starting at frame 2
+    		// By default, calling the Play method with the same SpriteAnimation that is already playing will be ignored.
+    		// Using force, you can ensure the SpriteAnimation is always played no matter what.
+    		animator.Play(idleAnimation, 2, true)
+		
+    		// Play the idle animation with a callback that will run once the animation ends. Callback will never be executed for looping animations though
+    		animator.Play(idleAnimation, 2, false, () => {
+      			Debug.Log($"Animation {animator.CurrentAnimation.title} finished");
+    		});
+  	}
 
 The SpriteAnimator also has the following method:
 
