@@ -37,7 +37,6 @@ namespace SpriteAnim {
         [field: SerializeField] public SpriteAnimation DefaultAnimation { get; private set; }
 
 
-
         /// <summary>
         /// The scale at which time passes
         /// </summary>
@@ -46,24 +45,20 @@ namespace SpriteAnim {
             set => m_TimeScale = value;
         }
 
-
         /// <summary>
         /// Is the animator playing an animation?
         /// </summary>
         public bool Playing => m_Playing;
-
 
         /// <summary>
         /// The Sprite Animation that is currently being played
         /// </summary>
         public SpriteAnimation CurrentAnimation => m_CurrentAnimation;
 
-
         /// <summary>
         /// SpriteRenderer component used for rendering the sprite animation
         /// </summary>
         public SpriteRenderer Renderer => m_Renderer;
-
 
 
         #region Privates
@@ -142,9 +137,21 @@ namespace SpriteAnim {
         #region Methods
 
         /// <summary>
-        /// Play a sprite animation
+        /// Play a sprite animation.
         /// </summary>
-        public void Play(SpriteAnimation animation, int startFrameIndex = 0, bool force = false, Action onComplete = null) {
+        public void Play(SpriteAnimation animation) =>
+            Play(animation, 0, false, null);
+
+        /// <summary>
+        /// Play a sprite animation.
+        /// </summary>
+        public void Play(SpriteAnimation animation, Action onComplete) =>
+            Play(animation, 0, false, onComplete);
+
+        /// <summary>
+        /// Play a sprite animation.
+        /// </summary>
+        public void Play(SpriteAnimation animation, int startFrameIndex, bool force, Action onComplete) {
             // Exit if the animation is null
             if (animation == null) return;
 
@@ -167,7 +174,6 @@ namespace SpriteAnim {
             m_Playing = true;
         }
 
-
         /// <summary>
         /// Stop playing an animation
         /// </summary>
@@ -176,7 +182,6 @@ namespace SpriteAnim {
             m_FrameIndex = 0;
             m_Timer = 0;
         }
-
 
         /// <summary>
         /// Displays a frame in the animation
