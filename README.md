@@ -56,7 +56,7 @@ If you wish to play a SpriteAnimation from code, it can be done in the following
     		animator.Play(idleAnimation, 2, true)
 		
     		// Play the idle animation with a callback that will run once the animation ends. Callback will never be executed for looping animations though
-    		animator.Play(idleAnimation, 2, false, () => {
+    		animator.Play(idleAnimation, () => {
       			Debug.Log($"Animation {animator.CurrentAnimation.title} finished");
     		});
   	}
